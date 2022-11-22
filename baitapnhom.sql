@@ -1,4 +1,3 @@
-﻿
 
 --Tạo Database
 create database QL_Ngan_Hang_Thuong_Mai
@@ -276,24 +275,22 @@ go
 
 
 
-
--------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------
-
+--------------------------------------------------------------------
+--------------------------------------------------------------------
 
 -- nhập data
 
 -- bảng chinhanh
 insert CHINHANH(MaCN,TenCN,Taisan,Diachi)
-values ('MB291HĐ',N'Chi nhánh Hà Đông',N'7000 tỷ đồng',N'Q.Hà Đông, Hà Nội')
+values ('MB291HD',N'Chi nhánh Hà Đông',7000000000000 ,N'Q.Hà Đông, Hà Nội')
 insert CHINHANH(MaCN,TenCN,Taisan,Diachi)
-values ('MB296BT',N'Chi nhánh Minh Khai',N'7500 tỷ đồng',N'Q.Hai Bà Trưng, Hà Nội')
+values ('MB296BT',N'Chi nhánh Minh Khai',7500000000000,N'Q.Hai Bà Trưng, Hà Nội')
 insert CHINHANH(MaCN,TenCN,Taisan,Diachi)
-values ('MB298CG',N'Chi nhánh Cầu Giấy',N'6800 tỷ đồng',N'Q. Cầu Giấy, Hà Nội')
+values ('MB298CG',N'Chi nhánh Cầu Giấy',6800000000000 ,N'Q. Cầu Giấy, Hà Nội')
 insert CHINHANH(MaCN,TenCN,Taisan,Diachi)
-values ('MB170TB',N'Chi nhánh Thái Bình',N'7200 tỷ đồng',N'TP Thái Bình, Thái Bình')
+values ('MB170TB',N'Chi nhánh Thái Bình',7200000000000,N'TP Thái Bình, Thái Bình')
 insert CHINHANH(MaCN,TenCN,Taisan,Diachi)
-values ('MB412SG',N'Chi nhánh Thủ Đức',N'8000 tỷ đồng',N'TP Thủ Đức, TP Hồ Chí MinH')
+values ('MB412SG',N'Chi nhánh Thủ Đức',8000000000000,N'TP Thủ Đức, TP Hồ Chí MinH')
 
 
 -- BẢNG KHACHHANG
@@ -311,15 +308,15 @@ VALUES ('170M82',N'Vũ Văn Khỏe',N'0896713640',N'TP.Thái Bình, Thái Bình'
 
 -- BẢNG CHUNGCHI
 INSERT CHUNGCHI(SoSR,TenChungChi,NgayPH,Laisuat,Thoihan,MaCN,MaKH)
-VALUES ('1268443',N'Chứng chỉ tiền gửi ghi danh','06/18/2022',N'8.4%/năm',N'18 tháng','MB291HĐ','291DN003')
+VALUES ('1268443',N'Chứng chỉ tiền gửi ghi danh','06/18/2022',8.4,18,'MB291HD','291DN003')
 INSERT CHUNGCHI(SoSR,TenChungChi,NgayPH,Laisuat,Thoihan,MaCN,MaKH)
-VALUES ('2672364',N'Chứng chỉ tiền gửi ghi danh','08/06/2022',N'7.5%/năm',N'6 tháng','MB298CG','298CN026')
+VALUES ('2672364',N'Chứng chỉ tiền gửi ghi danh','08/06/2022',7.5,6,'MB298CG','298CN026')
 INSERT CHUNGCHI(SoSR,TenChungChi,NgayPH,Laisuat,Thoihan,MaCN,MaKH)
-VALUES ('3684026',N'Chứng chỉ tiền gửi vô danh','08/14/2022',N'8.2%/năm',N'15 tháng','MB170TB','170CN128')
+VALUES ('3684026',N'Chứng chỉ tiền gửi vô danh','08/14/2022',8.2,15,'MB170TB','170CN128')
 INSERT CHUNGCHI(SoSR,TenChungChi,NgayPH,Laisuat,Thoihan,MaCN,MaKH)
-VALUES ('3459145',N'Chứng chỉ tiền gửi ghi danh','08/14/2022',N'8.0%/năm',N'12 tháng','MB170TB','170CN230')
+VALUES ('3459145',N'Chứng chỉ tiền gửi ghi danh','08/14/2022',8.0,12,'MB170TB','170CN230')
 INSERT CHUNGCHI(SoSR,TenChungChi,NgayPH,Laisuat,Thoihan,MaCN,MaKH)
-VALUES ('4526317',N'Chứng chỉ tiền gửi vô danh','08/26/2022',N'7.8%/năm',N'9 tháng','MB412SG','412DN320')
+VALUES ('4526317',N'Chứng chỉ tiền gửi vô danh','08/26/2022',7.8,9,'MB412SG','412DN320')
 
 
 
@@ -336,68 +333,69 @@ insert CN_VS_DN_covon(MaKH,TenKH,TgGiaoDich,MaGD)
 values ('170CN230',N'Phạm Thanh Tâm','08/14/2022','3478629762')
 
 
+
 -- BẢNG GIAODICH
 INSERT GIAODICH(MaGD,LoaiGD,NgayGD,NguoiGD,SotienGD,MaCN)
-VALUES ('170TG001',N'Gửi tiền vào tài khoản','08/14/2022',N'Vũ Thị Hoàng Hạnh',N'7 triệu VNĐ','MB170TB')
+VALUES ('170TG001',N'Gửi tiền vào tài khoản','08/14/2022',N'Vũ Thị Hoàng Hạnh',7000000,'MB170TB')
 INSERT GIAODICH(MaGD,LoaiGD,NgayGD,NguoiGD,SotienGD,MaCN)
-VALUES ('298VT012',N'Vay tiền','08/16/2022',N'Đỗ Hoàng Minh',N'100 triệu VNĐ','MB298CG')
+VALUES ('298VT012',N'Vay tiền','08/16/2022',N'Đỗ Hoàng Minh',100000000,'MB298CG')
 INSERT GIAODICH(MaGD,LoaiGD,NgayGD,NguoiGD,SotienGD,MaCN)
-VALUES ('170VT036',N'Vay tiền','08/16/2022',N'Vũ Văn Khỏe',N'200 triệu VNĐ','MB170TB')
+VALUES ('170VT036',N'Vay tiền','08/16/2022',N'Vũ Văn Khỏe',200000000,'MB170TB')
 INSERT GIAODICH(MaGD,LoaiGD,NgayGD,NguoiGD,SotienGD,MaCN)
-VALUES ('291TG063',N'Gửi tiền vào tài khoản','08/17/2022',N'Nguyễn Thị Hồng',N'18 triệu VNĐ','MB291HĐ')
+VALUES ('291TG063',N'Gửi tiền vào tài khoản','08/17/2022',N'Nguyễn Thị Hồng',18000000,'MB291HD')
 INSERT GIAODICH(MaGD,LoaiGD,NgayGD,NguoiGD,SotienGD,MaCN)
-VALUES ('291TG095',N'Vay tiền','08/19/2022',N'Lê Việt Anh',N'500 triệu VNĐ','MB291HĐ')
+VALUES ('291TG095',N'Vay tiền','08/19/2022',N'Lê Việt Anh',500000000,'MB291HD')
 
 
 
 -- BẢNG KHOANVAY
-INSERT KHOANVAY(MaKV,LoaiVay,Ngayvay,Laisuat,MaKH,MaCN)
-VALUES ('298VT012',N'Vay tín chấp','08/16/2022',N'14.5%/năm','298M26','MB298CG')
-INSERT KHOANVAY(MaKV,LoaiVay,Ngayvay,Laisuat,MaKH,MaCN)
-VALUES ('170VT036',N'Vay thế chấp','08/16/2022',N'10.8%/năm','170M82','MB170TB')
-INSERT KHOANVAY(MaKV,LoaiVay,Ngayvay,Laisuat,MaKH,MaCN)
-VALUES ('291TG095',N'Vay thế chấp','09/18/2022',N'10.8%/năm','291M03','MB291HĐ')
+INSERT KHOANVAY(MaGD,LoaiVay,Laisuat,MaKH)
+VALUES ('298VT012',N'Vay tín chấp',14.5,'298M26')
+INSERT KHOANVAY(MaGD,LoaiVay,Laisuat,MaKH)
+VALUES ('170VT036',N'Vay thế chấp',10.8,'170M82')
+INSERT KHOANVAY(MaGD,LoaiVay,Laisuat,MaKH)
+VALUES ('291TG095',N'Vay thế chấp',10.8,'291M03')
+
 
 
 -- BẢNG KHOANGUI
-INSERT KHOANGUI(MaKG,LoaiGui,Ngaygui,Laisuat,MaKH,MaCN)
-VALUES ('170TG001',N'Tiết kiệm không kỳ hạn','08/14/2022',N'5.5%/năm','170F36','MB170TB')
-INSERT KHOANGUI(MaKG,LoaiGui,Ngaygui,Laisuat,MaKH,MaCN)
-VALUES ('291TG063',N'Tiết kiệm có kỳ hạn','08/17/2022',N'6.0%/năm','291F06','MB291HĐ')
+INSERT KHOANGUI(MaGD,LoaiGui,Laisuat,MaKH)
+VALUES ('170TG001',N'Tiết kiệm không kỳ hạn',5.5,'170F36')
+INSERT KHOANGUI(MaGD,LoaiGui,Laisuat,MaKH)
+VALUES ('291TG063',N'Tiết kiệm có kỳ hạn',6.0,'291F06')
 
 
 --BẢNG TAIKHOAN
 INSERT TAIKHOAN(MaTK,NgayMo,SoDuTK,MaKH,MaCN)
-VALUES ('291036716','05/14/2019',N'19 triệu VNĐ','291M03','MB291HĐ')
+VALUES ('291036716','05/14/2019',19000000,'291M03','MB291HD')
 INSERT TAIKHOAN(MaTK,NgayMo,SoDuTK,MaKH,MaCN)
-VALUES ('291036712','04/26/2020',N'27 triệu VNĐ','291F06','MB291HĐ')
+VALUES ('291036712','04/26/2020',27000000,'291F06','MB291HD')
 INSERT TAIKHOAN(MaTK,NgayMo,SoDuTK,MaKH,MaCN)
-VALUES ('298364135','07/14/2020',N'50 triệu VNĐ','298M26','MB298CG')
+VALUES ('298364135','07/14/2020',50000000,'298M26','MB298CG')
 INSERT TAIKHOAN(MaTK,NgayMo,SoDuTK,MaKH,MaCN)
-VALUES ('170368426','08/16/2020',N'67 triệu VNĐ','170F36','MB170TB')
+VALUES ('170368426','08/16/2020',67000000,'170F36','MB170TB')
 
 
 -- BẢNG THETD
 INSERT THETD(MatheTD,Thoihan,MaCVV,MaTK)
-VALUES ('29101635',N'5 năm','096','291036716')
+VALUES ('29101635',5,'096','291036716')
 INSERT THETD(MatheTD,Thoihan,MaCVV,MaTK)
-VALUES ('291016975',N'5 năm','082','291036712')
+VALUES ('291016975',5,'082','291036712')
 INSERT THETD(MatheTD,Thoihan,MaCVV,MaTK)
-VALUES ('298014753',N'3 năm','365','298364135')
+VALUES ('298014753',3,'365','298364135')
 INSERT THETD(MatheTD,Thoihan,MaCVV,MaTK)
-VALUES ('170013647',N'5 năm','475','170368426')
+VALUES ('170013647',5,'475','170368426')
 
 
 -- BẢNG THEGN
 INSERT THEGN(MatheGN,Thoihan,MaCVV,MaTK,Loaithe)
-VALUES ('291023647',N'10 năm','951','291036716',N'Nội địa')
+VALUES ('291023647',10,'951','291036716',N'Nội địa')
 INSERT THEGN(MatheGN,Thoihan,MaCVV,MaTK,Loaithe)
-VALUES ('291023674',N'10 năm','614','291036712',N'Quốc tế')
+VALUES ('291023674',10,'614','291036712',N'Quốc tế')
 INSERT THEGN(MatheGN,Thoihan,MaCVV,MaTK,Loaithe)
-VALUES ('298022443',N'5 năm','024','298364135',N'Quốc tế')
+VALUES ('298022443',5,'024','298364135',N'Quốc tế')
 INSERT THEGN(MatheGN,Thoihan,MaCVV,MaTK,Loaithe)
-VALUES ('170023679',N'5 năm','366','170368426',N'Nội địa')
-
+VALUES ('170023679',5,'366','170368426',N'Nội địa')
 
 
 --BẢNG CTY
@@ -413,7 +411,7 @@ VALUES ('29TN056',N'Tập đoàn Viễn Thông Quân đội Việt Nam',N'Q.Từ
 
 -- BẢNG HOIPHIEU
 INSERT HOIPHIEU(MaHP,TenHP,TenCTphathanh,NgayPH,NgayDH,MaCT,MaCN)
-VALUES ('003NH035',N'HP Ngân hàng',N'Công ty cổ phần ô tô Trường Hải','06/19/2022','09/19/2022','40CP003','MB291HĐ')
+VALUES ('003NH035',N'HP Ngân hàng',N'Công ty cổ phần ô tô Trường Hải','06/19/2022','09/19/2022','40CP003','MB291HD')
 INSERT HOIPHIEU(MaHP,TenHP,TenCTphathanh,NgayPH,NgayDH,MaCT,MaCN)
 VALUES ('036NH036',N'HP Ngân hàng',N'Tập đoàn đá quý Doji','06/20/2022','09/20/2022','29TN036','MB298CG')
 INSERT HOIPHIEU(MaHP,TenHP,TenCTphathanh,NgayPH,NgayDH,MaCT,MaCN)
@@ -430,19 +428,21 @@ VALUES('CT029',N'Chuyển tiền','10/23/2022')
 INSERT DICHVUTHANHTOAN(MaDV,TenDV,NgayPS_Dichvu)
 VALUES('TT036',N'Thanh toán tiền nước','10/27/2022')
 
+
 -- BẢNG  DỊCH VỤ THANH TOÁN QUA TÀI KHOẢN
 INSERT DV_THANHTOANQUATK(MaLuotDV,MaDV,MaKH,MaCN)
-VALUES ('291CT028','CT028','291M03','MB291HĐ')
+VALUES ('291CT028','CT028','291M03','MB291HD')
 INSERT DV_THANHTOANQUATK(MaLuotDV,MaDV,MaKH,MaCN)
-VALUES ('296CT029','CT029','291F06','MB291HĐ')
+VALUES ('296CT029','CT029','291F06','MB291HD')
 INSERT DV_THANHTOANQUATK(MaLuotDV,MaDV,MaKH,MaCN)
 VALUES ('298TT036','TT036','298M26','MB298CG')
 
 
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-- -------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 
-
-
-
+/*Backup database*/
+BACKUP DATABASE QL_Ngan_Hang_Thuong_Mai
+to disk = 'd:\QL_Ngan_Hang_Thuong_Mai.bak'
