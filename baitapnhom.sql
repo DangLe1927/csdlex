@@ -39,18 +39,27 @@ create table CHUNGCHI
 )
 go
 
--- Tạo bảng GIAODICH
-create table GIAODICH
+-- Tạo bảng GIAODICH_vay
+create table GIAODICH_vay
 (
  MaGD varchar(10) primary key,
- LoaiGD nvarchar(50) not null,
+ MaVay varchar(10),
  NgayGD datetime,
- NguoiGD nvarchar(100),
- SotienGD int,
- MaCN varchar(10),
+ SotienGD BIGint,
+ MaKH varchar(10),
 )
 go
 
+-- Tạo bảng GIAODICH_gui
+create table GIAODICH_gui
+(
+ MaGD varchar(10) primary key,
+ MaGui varchar(10),
+ NgayGD datetime,
+ SotienGD BIGint,
+ MaKH varchar(10),
+)
+go
 -- Tạo table CN_&_DN_covon
 create table CN_VS_DN_covon
 ( 
@@ -64,19 +73,19 @@ go
 -- tạo bảng KHOANVAY
 create table KHOANVAY
 (
- MaGD varchar(10) primary key,
+ MaKvay varchar(10) primary key,
  LoaiVay nvarchar(50) not null,
  Laisuat float,
- MaKH varchar(10) not null,
+ 
 )
 go
 -- tạo bảng KHOANGUI
 create table KHOANGUI
 (
- MaGD varchar(10) primary key,
+ MaKgui varchar(10) primary key,
  LoaiGui nvarchar(50) not null,
  Laisuat float,
- MaKH varchar(10) not null,
+ 
 )
 go
 
@@ -172,12 +181,7 @@ foreign key (MaCN)
 references CHINHANH(MaCN)
 go
 
---  Tạo khóa ngoại FK_CHINHANH_VS_GIAODICH--
-alter table GIAODICH
-add constraint FK_CHINHANH_VS_GIAODICH
-foreign key (MaCN)
-references CHINHANH(MaCN)
-go
+
 
 --  Tạo khóa ngoại FK_CHINHANH_VS_TAIKHOAN
 alter table TAIKHOAN
@@ -194,19 +198,9 @@ references CHINHANH(MaCN)
 go
 
 
---  Tạo khóa ngoại FK_KHACHHANG_VS_KHOANVAY
-alter table KHOANVAY
-add constraint FK_KHACHHANG_VS_KHOANVAY
-foreign key (MaKH)
-references KHACHHANG(MaKH)
-go
 
---  Tạo khóa ngoại FK_KHACHHANG_VS_KHOANGUI
-alter table KHOANGUI
-add constraint FK_KHACHHANG_VS_KHOANGUI
-foreign key (MaKH)
-references KHACHHANG(MaKH)
-go
+
+
 
 --  Tạo khóa ngoại FK_KHACHHANG_VS_TAIKHOAN --
 alter table TAIKHOAN
@@ -222,19 +216,32 @@ foreign key (MaKH)
 references KHACHHANG(MaKH)
 go
 
--- Tạo khóa ngoại FK_GIAODICH_VS_KHOANVAY++
-alter table KHOANVAY
-add constraint FK_GIAODICH_VS_KHOANVAY
-foreign key (MaGD)
-references GIAODICH(MaGD)
+-- Tạo khóa ngoại FK_GIAODICH_vay_VS_KHOANVAY++
+alter table giaodich_vay
+add constraint FK_GIAODICH_vay_VS_KHOANVAY
+foreign key (mavay)
+references khoanvay(makvay)
 go
 
+-- Tạo khóa ngoại FK_GIAODICH_vay_VS_khachhang +++++++
+alter table giaodich_vay
+add constraint FK_GIAODICH_vay_VS_KHachhang
+foreign key (makh)
+references khachhang(makh)
+go
 
--- Tạo khóa ngoại FK_GIAODICH_VS_KHOANGUI++
-alter table KHOANGUI
-add constraint FK_GIAODICH_VS_KHOANGUI
-foreign key (MaGD)
-references GIAODICH(MaGD)
+-- Tạo khóa ngoại FK_GIAODICH_gui_VS_KHOANGUI++
+alter table giaodich_gui
+add constraint FK_GIAODICH_gui_VS_khoangui
+foreign key (magui)
+references khoangui(makgui)
+go
+
+-- Tạo khóa ngoại FK_GIAODICH_gui_VS_khachhang ++++++
+alter table giaodich_gui
+add constraint FK_GIAODICH_gui_VS_khachhang
+foreign key (makh)
+references khachhang(makh)
 go
 
 -- Tạo khóa ngoại FK_CN_VS_DN_covon_VS_CHUNGCHI
@@ -334,35 +341,40 @@ values ('170CN230',N'Phạm Thanh Tâm','08/14/2022','3478629762')
 
 
 
--- BẢNG GIAODICH
-INSERT GIAODICH(MaGD,LoaiGD,NgayGD,NguoiGD,SotienGD,MaCN)
-VALUES ('170TG001',N'Gửi tiền vào tài khoản','08/14/2022',N'Vũ Thị Hoàng Hạnh',7000000,'MB170TB')
-INSERT GIAODICH(MaGD,LoaiGD,NgayGD,NguoiGD,SotienGD,MaCN)
-VALUES ('298VT012',N'Vay tiền','08/16/2022',N'Đỗ Hoàng Minh',100000000,'MB298CG')
-INSERT GIAODICH(MaGD,LoaiGD,NgayGD,NguoiGD,SotienGD,MaCN)
-VALUES ('170VT036',N'Vay tiền','08/16/2022',N'Vũ Văn Khỏe',200000000,'MB170TB')
-INSERT GIAODICH(MaGD,LoaiGD,NgayGD,NguoiGD,SotienGD,MaCN)
-VALUES ('291TG063',N'Gửi tiền vào tài khoản','08/17/2022',N'Nguyễn Thị Hồng',18000000,'MB291HD')
-INSERT GIAODICH(MaGD,LoaiGD,NgayGD,NguoiGD,SotienGD,MaCN)
-VALUES ('291TG095',N'Vay tiền','08/19/2022',N'Lê Việt Anh',500000000,'MB291HD')
+-- BẢNG GIAODICH_gui +++++++++++++++++++++++++++++++++++++++++++++++++
+INSERT GIAODICH_gui(MaGD,NgayGD,MaGui,makh,SotienGD)
+VALUES ('170TG001','08/14/2022','170TG001','170F36',7000000)
+INSERT GIAODICH_gui(MaGD,NgayGD,MaGui,makh,SotienGD)
+VALUES ('298VT012','08/16/2022','291TG063','291F06',10000000)
+INSERT GIAODICH_gui(MaGD,NgayGD,MaGui,makh,SotienGD)
+VALUES ('170VT036','08/16/2022','291TG063','291M03',20000000)
 
+
+
+-- BẢNG GIAODICH_VAY +++++++++++++++++++++++++++++++++++++++++++++++++
+INSERT GIAODICH_vay(MaGD,NgayGD,MaVay,makh,SotienGD)
+VALUES ('170TG001','08/14/2022','298VT012','298M26',7000000)
+INSERT GIAODICH_VAY(MaGD,NgayGD,MaVay,makh,SotienGD)
+VALUES ('298VT012','08/16/2022','170VT036','170F36',100000000)
+INSERT GIAODICH_VAY(MaGD,NgayGD,MaVay,makh,SotienGD)
+VALUES ('170VT036','08/16/2022','298VT012','291F06',200000000)
 
 
 -- BẢNG KHOANVAY
-INSERT KHOANVAY(MaGD,LoaiVay,Laisuat,MaKH)
-VALUES ('298VT012',N'Vay tín chấp',14.5,'298M26')
-INSERT KHOANVAY(MaGD,LoaiVay,Laisuat,MaKH)
-VALUES ('170VT036',N'Vay thế chấp',10.8,'170M82')
-INSERT KHOANVAY(MaGD,LoaiVay,Laisuat,MaKH)
-VALUES ('291TG095',N'Vay thế chấp',10.8,'291M03')
+INSERT KHOANVAY(Makvay,LoaiVay,Laisuat)
+VALUES ('298VT012',N'Vay tín chấp',14.5)
+INSERT KHOANVAY(MaKvay,LoaiVay,Laisuat)
+VALUES ('170VT036',N'Vay thế chấp',10.8)
+INSERT KHOANVAY(Makvay,LoaiVay,Laisuat)
+VALUES ('291TG095',N'Vay thế chấp',10.8)
 
 
 
 -- BẢNG KHOANGUI
-INSERT KHOANGUI(MaGD,LoaiGui,Laisuat,MaKH)
-VALUES ('170TG001',N'Tiết kiệm không kỳ hạn',5.5,'170F36')
-INSERT KHOANGUI(MaGD,LoaiGui,Laisuat,MaKH)
-VALUES ('291TG063',N'Tiết kiệm có kỳ hạn',6.0,'291F06')
+INSERT KHOANGUI(MaKgui,LoaiGui,Laisuat)
+VALUES ('170TG001',N'Tiết kiệm không kỳ hạn',5.5)
+INSERT KHOANGUI(MaKgui,LoaiGui,Laisuat)
+VALUES ('291TG063',N'Tiết kiệm có kỳ hạn',6.0)
 
 
 --BẢNG TAIKHOAN
@@ -424,7 +436,7 @@ VALUES ('056NH041',N'HP Ngân hàng',N'Tập đoàn Viễn Thông Quân đội V
 INSERT DICHVUTHANHTOAN(MaDV,TenDV,NgayPS_Dichvu)
 VALUES('CT028',N'Chuyển tiền','10/22/2022')
 INSERT DICHVUTHANHTOAN(MaDV,TenDV,NgayPS_Dichvu)
-VALUES('CT029',N'Chuyển tiền','10/23/2022')
+VALUES('CT029',N'tHANH TOÁN TIỀN ĐIỆN','10/23/2022')
 INSERT DICHVUTHANHTOAN(MaDV,TenDV,NgayPS_Dichvu)
 VALUES('TT036',N'Thanh toán tiền nước','10/27/2022')
 
@@ -443,6 +455,25 @@ VALUES ('298TT036','TT036','298M26','MB298CG')
 -- -------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 
-/*Backup database*/
-BACKUP DATABASE QL_Ngan_Hang_Thuong_Mai
-to disk = 'd:\QL_Ngan_Hang_Thuong_Mai.bak'
+
+
+
+-- câu 1
+with dem_so_gd_vay(makh,soluongvay)
+as (select makh,count(MaGD) from GIAODICH_vay where DATEDIFF(MONTH,NgayGD,CURRENT_TIMESTAMP) <= 3 group by Makh), 
+dem_so_gd_gui (makh,soluonggui)
+as (select makh ,count(MaGD) from GIAODICH_gui where DATEDIFF(MONTH,NgayGD,CURRENT_TIMESTAMP) <= 3 group by MaKH ) 
+select top(1 ) with ties TenKh
+from KHACHHANG,dem_so_gd_vay, dem_so_gd_gui 
+where   KHACHHANG.MaKH =dem_so_gd_gui.makh and KHACHHANG.MaKH =dem_so_gd_vay.makh 
+order by (soluonggui+ soluongvay) desc
+
+-- câu 2
+WITH DEM_SO_GD(MADV,SOLUONGDUNG)
+AS (SELECT MADV,COUNT(MaLuotDV) FROM DV_THANHTOANQUATK GROUP BY MADV)
+SELECT  TOP(3) with ties TenDV
+FROM DICHVUTHANHTOAN , DEM_SO_GD
+where DICHVUTHANHTOAN.MaDV = DEM_SO_GD.MADV 
+order by  DEM_SO_GD.SOLUONGDUNG desc
+
+
